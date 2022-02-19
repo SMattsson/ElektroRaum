@@ -1,3 +1,6 @@
 [submodule "submodules/cores"]
 	path = submodules/cores
 	url = https://github.com/PaulStoffregen/cores.git
+[submodule "submodules/CMSIS"]
+	path = submodules/CMSIS
+	url = https://github.com/ARM-software/CMSIS.git
