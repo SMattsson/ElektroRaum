@@ -1,0 +1,26 @@
+{
+    "configurations": [
+        {
+            "name": "ElektroRaum",
+            "includePath": [
+                "lib/**",
+                "submodules/**",
+                "tools/**",
+                "src/**"
+            ],
+            "defines": [
+                "__IMXRT1062__",
+                "ARDUINO_TEENSY41",
+                "USB_MIDI_SERIAL",
+                "ARDUINO=10813",
+                "TEENSYDUINO=154",
+                "CORE_TEENSY",
+                "F_CPU=816000000L",
+                "LAYOUT_US_ENGLISH",
+                ""
+            ],
+            "cppStandard": "c++17"
+        }
+    ],
+    "version": 4
+}

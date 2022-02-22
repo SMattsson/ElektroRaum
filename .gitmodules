@@ -9,4 +9,23 @@
 	url = https://github.com/PaulStoffregen/teensy_loader_cli.git
 [submodule "submodules/teensy_size"]
 	path = submodules/teensy_size
+	branch = main
 	url = https://github.com/PaulStoffregen/teensy_size.git
+[submodule "submodules/Audio"]
+	path = submodules/Audio
+	url = https://github.com/PaulStoffregen/Audio.git
+[submodule "submodules/SPI"]
+	path = submodules/SPI
+	url = https://github.com/PaulStoffregen/SPI.git
+[submodule "submodules/SD"]
+	path = submodules/SD
+	url = https://github.com/PaulStoffregen/SD.git
+[submodule "submodules/SdFat"]
+	path = submodules/SdFat
+	url = https://github.com/PaulStoffregen/SdFat.git
+[submodule "submodules/Wire"]
+	path = submodules/Wire
+	url = https://github.com/PaulStoffregen/Wire.git
+[submodule "submodules/SerialFlash"]
+	path = submodules/SerialFlash
+	url = https://github.com/PaulStoffregen/SerialFlash.git
