@@ -11,7 +11,8 @@ TEENSY_DEFINES = -D__IMXRT1062__ \
 				 -DTEENSYDUINO=154 \
 				 -DARDUINO_TEENSY41 \
 				 -DARDUINO=10813 \
-				 -DF_CPU=816000000L
+				 -DF_CPU=816000000L \
+				 -D__ARM_ARCH_7EM__
 #-U__STRICT_ANSI__ #Needed for Serial.printf to work, but can't compile audio library with this on
 
 # directory to build src files in

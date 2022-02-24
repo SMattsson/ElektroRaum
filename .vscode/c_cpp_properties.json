@@ -16,6 +16,7 @@
                 "TEENSYDUINO=154",
                 "CORE_TEENSY",
                 "F_CPU=816000000L",
+                "__ARM_ARCH_7EM__",
                 "LAYOUT_US_ENGLISH",
                 ""
             ],
