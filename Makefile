@@ -6,7 +6,7 @@ TARGET = $(notdir $(CURDIR))
 
 # configurable options, overclock@816MHz
 TEENSY_DEFINES = -D__IMXRT1062__ \
-				 -DUSB_SERIAL \
+				 -DUSB_MIDI_SERIAL \
 				 -DLAYOUT_US_ENGLISH \
 				 -DTEENSYDUINO=154 \
 				 -DARDUINO_TEENSY41 \
@@ -63,7 +63,7 @@ SRC_CCP_FILES:=$(filter %.cpp, $(SRC_FILES))
 SRC_S_FILES:=$(filter %.S, $(SRC_FILES))
 
 SUB_MODULE_SRC_FILES:=$(shell find submodules/cores/teensy4 -type f)
-SUB_MODULE_SRC_FILES+=$(shell find submodules/SPI submodules/Audio submodules/SD/src submodules/Wire submodules/SerialFlash -maxdepth 1 -type f)
+SUB_MODULE_SRC_FILES+=$(shell find submodules/SPI submodules/Audio submodules/SD/src submodules/Wire submodules/SerialFlash submodules/MIDI/src -maxdepth 1 -type f)
 SUB_MODULE_SRC_FILES+=$(shell find submodules/Audio/utility -maxdepth 1 -type f)
 SUB_MODULE_SRC_FILES+=$(shell find submodules/SdFat/src -type f)
 SRC_MODULE_C_FILES:=$(filter %.c, $(SUB_MODULE_SRC_FILES))
@@ -81,6 +81,7 @@ HEADER_FILES += submodules/SD/src
 HEADER_FILES += submodules/SdFat/src
 HEADER_FILES += submodules/Wire
 HEADER_FILES += submodules/SerialFlash
+HEADER_FILES += submodules/MIDI/src
 HEADER_FILES := $(foreach lib, $(HEADER_FILES), -I$(lib))
 
 SOURCES := $(SRC_C_FILES:.c=.o) $(SRC_CC_FILES:.cc=.o) $(SRC_CCP_FILES:.cpp=.o) $(SRC_S_FILES:.S=.o)
