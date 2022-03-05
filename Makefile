@@ -101,10 +101,10 @@ all: hex
 hex: $(TARGET).hex
 
 reboot:
-	@submodules/teensy_loader_cli/teensy_loader_cli --mcu=TEENSY41 -s -b
+	@submodules/teensy_loader_cli/teensy_loader_cli --mcu=TEENSY41 -s -v -b
 
 upload: $(TARGET).hex
-	@submodules/teensy_loader_cli/teensy_loader_cli --mcu=TEENSY41 -w -s -v /${OUT_DIR}/"$(basename $<)".hex
+	@submodules/teensy_loader_cli/teensy_loader_cli --mcu=TEENSY41 -s -w -v /${OUT_DIR}/"$(basename $<)".hex
 
 $(BUILD_SRC_DIR)/%.o: %.S
 	@echo "[S]\t$<"

@@ -1,12 +1,9 @@
 {
     "configurations": [
         {
-            "name": "ElektroRaum",
+            "name": "elektroRaum",
             "includePath": [
-                "lib/**",
-                "submodules/**",
-                "tools/**",
-                "src/**"
+                "${workspaceFolder}/**"
             ],
             "defines": [
                 "__IMXRT1062__",

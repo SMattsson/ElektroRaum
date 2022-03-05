@@ -13,7 +13,7 @@ void VoiceOscillator::play(const uint8_t midiChannel, const uint8_t midiNote, co
     VoiceBase::play(midiChannel, midiNote, velocity);
     m_oscillator.begin(WAVEFORM_BANDLIMIT_SQUARE);
     m_oscillator.frequency(m_frequency);
-    m_oscillator.amplitude(0.5f);
+    m_oscillator.amplitude(0.3f);
 }
 
 void VoiceOscillator::stop()

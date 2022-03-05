@@ -7,8 +7,8 @@ class VoiceOscillator : public VoiceBase
 public:
     VoiceOscillator();
     virtual ~VoiceOscillator();
-    void play(const uint8_t midiChannel, const uint8_t midiNote, const uint8_t velocity) final override;
-    void stop() final override;
+    virtual void play(const uint8_t midiChannel, const uint8_t midiNote, const uint8_t velocity) override;
+    virtual void stop() final override;
 
 protected:
     AudioSynthWaveformModulated m_oscillator;

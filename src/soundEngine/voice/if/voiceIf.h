@@ -6,6 +6,7 @@ class VoiceIf
 {
 public:
     VoiceIf(){};
+    virtual ~VoiceIf(){};
     virtual void play(const uint8_t midiChannel, const uint8_t midiNote, const uint8_t velocity) = 0;
     virtual void stop() = 0;
     virtual bool isIdle() const = 0;
