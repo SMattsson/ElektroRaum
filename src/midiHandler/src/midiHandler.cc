@@ -21,6 +21,14 @@ void noteOff(const uint8_t midiChannel, const uint8_t midiNote, const uint8_t ve
     }
 }
 
+void controlChange(const uint8_t channel, const uint8_t controller, const uint8_t data)
+{
+    if(g_soundEnginePtr)
+    {
+        g_soundEnginePtr->controlChange(channel, controller, data);
+    }
+}
+
 MidiHandler::MidiHandler(SoundEngine& soundEngine)
 {
     if (!m_initialized)
@@ -28,6 +36,7 @@ MidiHandler::MidiHandler(SoundEngine& soundEngine)
         g_soundEnginePtr = &soundEngine;
         usbMIDI.setHandleNoteOn(noteOn);
         usbMIDI.setHandleNoteOff(noteOff);
+        usbMIDI.setHandleControlChange(controlChange);
         m_initialized = true;
     }
 }

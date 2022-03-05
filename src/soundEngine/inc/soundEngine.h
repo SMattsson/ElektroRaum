@@ -13,6 +13,7 @@ public:
     virtual ~SoundEngine();
     virtual void noteOn(const uint8_t midiChannel, const uint8_t midiNote, const uint8_t velocity) const;
     virtual void noteOff(const uint8_t midiChannel, const uint8_t midiNote, const uint8_t velocity) const;
+    virtual void controlChange(const uint8_t channel, const uint8_t controller, const uint8_t data) const;
 
 protected:
     virtual void initialize();

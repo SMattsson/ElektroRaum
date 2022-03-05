@@ -1,4 +1,5 @@
 #include "soundEngine.h"
+#include "midiLib.h"
 
 std::vector<VoiceOscillator*> SoundEngine::m_voiceOscillators;
 std::vector<VoiceIf*> SoundEngine::m_voices;
@@ -74,5 +75,31 @@ void SoundEngine::noteOff(const uint8_t midiChannel, const uint8_t midiNote, __a
             voice->stop();
             return;
         }
+    }
+}
+
+void SoundEngine::controlChange(const uint8_t channel, const uint8_t controller, const uint8_t data) const
+{
+    switch (controller)
+    {
+    case MIDI_NAMESPACE::MidiControlChangeNumber::AllSoundOff:
+        for (const auto &voice : m_voices)
+        {
+            if (voice->getMidiChannel() == channel)
+            {
+                voice->stop();
+            }
+        }
+        break;
+    case MIDI_NAMESPACE::MidiControlChangeNumber::AllNotesOff:
+        for (const auto &voice : m_voices)
+        {
+            if (voice->getMidiChannel() == channel)
+            {
+                voice->stop();
+            }
+        }
+        break;
+    default:;
     }
 }
