@@ -1,5 +1,5 @@
 # Build utilizing all threads
-MAKEFLAGS := "-j $(shell nproc)"
+export MAKEFLAGS := "-j $(shell nproc)"
 
 # The name of the project (used to name the compiled .hex file)
 TARGET = $(notdir $(CURDIR))
@@ -19,9 +19,12 @@ TEENSY_DEFINES = -D__IMXRT1062__ \
 BUILD_SRC_DIR = $(abspath $(CURDIR)/build_src)
 # directory to build submodule files in
 BUILD_SUB_MODULES_DIR = $(abspath $(CURDIR)/build_submodules)
+# directory to build src files in
+export BUILD_UNITTEST_DIR = $(abspath $(CURDIR)/build_unittest)
 
 # directory to put elf and hex in
 OUT_DIR = $(abspath $(CURDIR)/out)
+export OUT_DIR_UNITTEST = $(abspath $(CURDIR)/out_unittest)
 
 # path location for Arduino libraries
 LIBRARY_PATH = lib
@@ -32,11 +35,12 @@ INCLUDE = -I submodules/cores/teensy4
 CPUOPTIONS = -mcpu=cortex-m7 -mfloat-abi=hard -mfpu=fpv5-d16 -mthumb
 
 # CPPFLAGS = compiler options for C and C++
-CPPFLAGS = -Wall -O3 $(CPUOPTIONS) -MMD $(TEENSY_DEFINES) -I. -ffunction-sections -fdata-sections -fno-exceptions -fno-unwind-tables ${INCLUDE}
+export CPPFLAGS_SRC = -Wall -O3 -ffunction-sections -fdata-sections -fno-exceptions -fno-unwind-tables
+CPPFLAGS = ${CPPFLAGS_SRC} $(CPUOPTIONS) -MMD $(TEENSY_DEFINES) -I. ${INCLUDE}
 
 # compiler options for C++ only
 CXXFLAGS_COMMON = -std=c++1z -felide-constructors -fpermissive -fno-rtti -fno-threadsafe-statics
-CXXFLAGS_SRC := ${CXXFLAGS_COMMON} -Wconversion -Wextra
+export CXXFLAGS_SRC := ${CXXFLAGS_COMMON} -Wconversion -Wextra
 CXXFLAGS_SUBMODULES = ${CXXFLAGS_COMMON} -Wno-error=narrowing
 
 # compiler options for C only
@@ -106,6 +110,9 @@ reboot:
 upload: $(TARGET).hex
 	@submodules/teensy_loader_cli/teensy_loader_cli --mcu=TEENSY41 -s -w -v /${OUT_DIR}/"$(basename $<)".hex
 
+unittests:
+	@cd test && ${MAKE} --no-print-directory -f unittests.mk
+
 $(BUILD_SRC_DIR)/%.o: %.S
 	@echo "[S]\t$<"
 	@mkdir -p "$(dir $@)"
@@ -167,7 +174,8 @@ clean:
 	@find ${BUILD_SRC_DIR} -mindepth 1 -maxdepth 1 ! -name ".*" ! -name "README.md" -exec rm -r -- {} +
 
 cleanAll:
-	@echo Deleting compiled files from src, lib, submodules
+	@echo Deleting compiled files from src, lib, submodules and unittest
 	@find ${OUT_DIR}   -mindepth 1 -maxdepth 1 ! -name ".*" ! -name "README.md" -exec rm -r -- {} +
 	@find ${BUILD_SRC_DIR} -mindepth 1 -maxdepth 1 ! -name ".*" ! -name "README.md" -exec rm -r -- {} +
 	@find ${BUILD_SUB_MODULES_DIR} -mindepth 1 -maxdepth 1 ! -name ".*" ! -name "README.md" -exec rm -r -- {} +
+	@find ${BUILD_UNITTEST_DIR} -mindepth 1 -maxdepth 1 ! -name ".*" ! -name "README.md" -exec rm -r -- {} +

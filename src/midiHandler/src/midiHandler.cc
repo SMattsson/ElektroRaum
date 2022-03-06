@@ -1,9 +1,10 @@
 #include "midiHandler.h"
-#include "soundEngine.h"
+#include "soundEngineIf.h"
+#include "arduinoLib.h"
 
 bool MidiHandler::m_initialized{false};
 
-SoundEngine* g_soundEnginePtr{nullptr};
+SoundEngineIf* g_soundEnginePtr{nullptr};
 
 void noteOn(const uint8_t midiChannel, const uint8_t midiNote, const uint8_t velocity)
 {
@@ -29,7 +30,7 @@ void controlChange(const uint8_t channel, const uint8_t controller, const uint8_
     }
 }
 
-MidiHandler::MidiHandler(SoundEngine& soundEngine)
+MidiHandler::MidiHandler(SoundEngineIf& soundEngine)
 {
     if (!m_initialized)
     {

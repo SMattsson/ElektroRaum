@@ -78,7 +78,7 @@ void SoundEngine::noteOff(const uint8_t midiChannel, const uint8_t midiNote, __a
     }
 }
 
-void SoundEngine::controlChange(const uint8_t channel, const uint8_t controller, const uint8_t data) const
+void SoundEngine::controlChange(const uint8_t channel, const uint8_t controller, __attribute__((unused))const uint8_t data) const
 {
     switch (controller)
     {

@@ -21,6 +21,12 @@ done
 #https://libusb.info/
 sudo apt -qq install libusb-dev > /dev/null 2>&1
 
+#Google test
+sudo apt -qq install libgtest-dev > /dev/null 2>&1
+
+#Google mock
+sudo apt -ww install libgmock-dev > /dev/null 2>&1
+
 #Udev rule for teensy
 #https://wiki.debian.org/udev
 sudo wget -nc -q -O /etc/udev/rules.d/00-teensy.rules https://www.pjrc.com/teensy/00-teensy.rules

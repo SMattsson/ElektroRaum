@@ -1,12 +1,13 @@
 #pragma once
 
 #include <vector>
+#include "soundEngineIf.h"
 #include "audioLib.h"
 #include "voiceIf.h"
 #include "voiceOscillator.h"
 #include "SoundEngineCfg.h"
 
-class SoundEngine
+class SoundEngine : public SoundEngineIf
 {
 public:
     SoundEngine();

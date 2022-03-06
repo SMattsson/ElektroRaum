@@ -1,11 +1,11 @@
 #pragma once
 
-class SoundEngine;
+class SoundEngineIf;
 
 class MidiHandler
 {
 public:
-    MidiHandler(SoundEngine& soundEngine);
+    MidiHandler(SoundEngineIf& soundEngine);
     virtual ~MidiHandler();
     virtual void update();
 
