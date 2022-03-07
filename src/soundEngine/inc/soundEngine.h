@@ -6,6 +6,7 @@
 #include "voiceIf.h"
 #include "voiceOscillator.h"
 #include "SoundEngineCfg.h"
+#include "elektroRaumAudioMixer.h"
 
 class SoundEngine : public SoundEngineIf
 {
@@ -24,6 +25,6 @@ private:
     static std::vector<VoiceIf*> m_voices;
     static std::vector<AudioConnection*> m_audioConnections;
     static SoundEngineCfg::MasterOutDevice m_masterOutDevice;
-    static AudioMixer4 m_outputMixer;
+    static ElektroRaumAudioMixer<SoundEngineCfg::NUMBER_OF_VOICES> m_outputMixer;
     static bool m_initialized;
 };

@@ -5,8 +5,10 @@ std::vector<VoiceOscillator*> SoundEngine::m_voiceOscillators;
 std::vector<VoiceIf*> SoundEngine::m_voices;
 std::vector<AudioConnection*> SoundEngine::m_audioConnections;
 SoundEngineCfg::MasterOutDevice SoundEngine::m_masterOutDevice;
-AudioMixer4 SoundEngine::m_outputMixer;
+
+ElektroRaumAudioMixer<SoundEngineCfg::NUMBER_OF_VOICES> SoundEngine::m_outputMixer;
 bool SoundEngine::m_initialized{false};
+
 
 SoundEngine::SoundEngine()
 {
