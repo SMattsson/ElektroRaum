@@ -14,6 +14,7 @@ public:
     virtual uint8_t getMidiNote() const = 0;
     virtual uint8_t getVelocity() const = 0;
     virtual AudioAmplifier& getOutput() = 0;
+    virtual void update() = 0;
 
 protected:
     enum class VoiceState{IDLE, PLAYING, RELEASED};

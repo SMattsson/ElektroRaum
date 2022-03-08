@@ -20,7 +20,6 @@ public:
 
 MidiHandlerTest::~MidiHandlerTest()
 {
-    Mock::VerifyAndClearExpectations(&usbMIDI);
 }
 
 void MidiHandlerTest::SetUp()

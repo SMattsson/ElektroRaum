@@ -5,10 +5,10 @@ std::vector<VoiceOscillator*> SoundEngine::m_voiceOscillators;
 std::vector<VoiceIf*> SoundEngine::m_voices;
 std::vector<AudioConnection*> SoundEngine::m_audioConnections;
 SoundEngineCfg::MasterOutDevice SoundEngine::m_masterOutDevice;
+DataHandler SoundEngine::m_dataHandler;
 
 ElektroRaumAudioMixer<SoundEngineCfg::NUMBER_OF_VOICES> SoundEngine::m_outputMixer;
 bool SoundEngine::m_initialized{false};
-
 
 SoundEngine::SoundEngine()
 {
@@ -77,6 +77,14 @@ void SoundEngine::noteOff(const uint8_t midiChannel, const uint8_t midiNote, __a
             voice->stop();
             return;
         }
+    }
+}
+
+void SoundEngine::update() const
+{
+    for (const auto& voice : m_voices)
+    {
+        voice->update();
     }
 }
 

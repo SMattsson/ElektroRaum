@@ -5,23 +5,23 @@
 #include <vector>
 #include "soundEngine.h"
 #include "midiHandler.h"
-#include "audioLib.h"
-#include "audioUtils.h"
-#include "voiceOscillator.h"
+#include "dataHandler.h"
+#include "serialHandler.h"
+#include "arduinoLib.h"
 
 int main()
 {
+    DataHandler dataHandler;
     SoundEngine soundEngine;
     MidiHandler midiHandler(soundEngine);
-
-    //Baudrate doesn't matter as it's "emulated serial" trough USB,
-    //and always runs at USB speeds (up to 480Mbits/s).
-    Serial.begin(115200);
+    SerialHandler serialHandler(dataHandler);
 
     uint32_t previousMillis = 0;
     while (true)
     {
         midiHandler.update();
+        serialHandler.update();
+        soundEngine.update();
         if (millis() - previousMillis > 100)
         {
             previousMillis = millis();
