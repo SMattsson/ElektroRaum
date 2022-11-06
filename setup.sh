@@ -27,11 +27,6 @@ sudo apt -qq install libgtest-dev -y
 #Google mock
 sudo apt -ww install libgmock-dev -y
 
-#Python 3 for GUI
-sudo apt install python3 python3-tk
-sudo apt install python3-pip
-sudo pip install pyserial
-
 #Udev rule for teensy
 #https://wiki.debian.org/udev
 rm /etc/udev/rules.d/00-teensy.rules -rf
