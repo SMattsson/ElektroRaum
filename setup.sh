@@ -19,13 +19,13 @@ done
 
 #To be able to use the teensy_loader_cli for uploading firmware
 #https://libusb.info/
-sudo apt -qq install libusb-dev > /dev/null 2>&1
+sudo apt -qq install libusb-dev -y
 
 #Google test
-sudo apt -qq install libgtest-dev > /dev/null 2>&1
+sudo apt -qq install libgtest-dev -y
 
 #Google mock
-sudo apt -ww install libgmock-dev > /dev/null 2>&1
+sudo apt -ww install libgmock-dev -y
 
 #Python 3 for GUI
 sudo apt install python3 python3-tk
@@ -34,6 +34,7 @@ sudo pip install pyserial
 
 #Udev rule for teensy
 #https://wiki.debian.org/udev
+rm /etc/udev/rules.d/00-teensy.rules -rf
 sudo wget -nc -q -O /etc/udev/rules.d/00-teensy.rules https://www.pjrc.com/teensy/00-teensy.rules
 
 echo ""
@@ -72,11 +73,15 @@ echo ""
 while true; do
     read -p "Do you want to remove ModemManager (y/n)? " yn
     case $yn in
-        [Yy] ) sudo apt remove modemmanager > /dev/null 2>&1; break;;
+        [Yy] ) sudo apt remove modemmanager -y ; break;;
         [Nn] ) echo  "Skipping removal of modemmanager"; break;;
         * ) echo  "Please answer y or n.";;
     esac
 done
 
 echo ""
+echo "git submodule init ........"
+git submodule init
+echo "git submodule update ........"
+git submodule update
 echo "Complete!"
