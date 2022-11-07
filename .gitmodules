@@ -4,10 +4,6 @@
 [submodule "submodules/CMSIS"]
 	path = submodules/CMSIS
 	url = https://github.com/ARM-software/CMSIS.git
-[submodule "submodules/teensy_loader_cli"]
-	path = submodules/teensy_loader_cli
-	url = https://github.com/SMattsson/teensy_loader_cli.git
-	ignore = dirty
 [submodule "submodules/teensy_size"]
 	path = submodules/teensy_size
 	branch = main
