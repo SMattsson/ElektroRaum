@@ -29,3 +29,6 @@
 [submodule "submodules/MIDI"]
 	path = submodules/MIDI
 	url = https://github.com/PaulStoffregen/MIDI.git
+[submodule "submodules/teensy_loader_cli"]
+	path = submodules/teensy_loader_cli
+	url = https://github.com/SMattsson/teensy_loader_cli.git
